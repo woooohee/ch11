@@ -1,23 +1,86 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>장고 북마크 리스트</title>
+<meta charset="UTF-8">
+<title>장고 북마크 리스트</title>
+<style>
+#tbl {
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 90%;
+margin: auto;
+}
+#tbl td, #tbl th {
+border: 1px solid #ddd;
+padding: 8px;
+}
+#tbl tr:nth-child(even){background-color: #f2f2f3;}
+#tbl tr:hover {background-color: #ddd;}
+#tbl th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: left;
+background-color: #4CAF50;
+color: white;
+}
+</style>
 </head>
 <body>
-    <div id="content">
-        <h1>바로가기 모음</h1>
-          <ul>
-            {% for bookmark in object_list %}
-            <li>
-            <a href="{% url 'detail' bookmark.id %}">
-            {{ bookmark }}
-            </a>
-            </li>
-            {% endfor %}
-          </ul>
-    </div>
+<div id="content">
+<h1>바로가기 모음</h1>
+{% if request.path == "/bookmark_t_CBV/" %}
+<p>{{request.path}} => views.BookmarkLV => bookmark_list.html</p>
+<!--표 형식 스타일-->
+<table id="tbl" >
+<tr>
+<th>id</th>
+<th>title</th>
+<th>url</th>
+</tr>
+{% for bookmark in object_list %} <!-- 디폴트 컨텍스트 변수가 objecct_list -->
+<tr>
+<td>{{ bookmark.id }}</td>
+<td>{{ bookmark.title }}</td>
+<td>
+<!-- name이 'detail'인 url 패턴으로 연결하되
+bookmark.id가 pk 매개변수로 지정되어
+/bookmark/99/와 같은 url 패턴으로 처리됨.
+따라서 BookmarkDV.as_view() 메소드가 담당하여
+bookmark_detail.html로 연결함. -->
+<a href="{% url 'detail' bookmark.id %}">
+    {{ bookmark.url }}
+</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p>{{request.path}} => views.BookmarkLV => bookmark_list.html</p>
+<!--원래 교과서 스타일-->
+<ul>
+{% for bookmark in object_list %} <!--
+object_list 내부의 모든 bookmark에 대하여 반복 처리
+BookmarkLV 클래스형 뷰에서 설명한
+디폴트 컨텍스트 변수 object_list를 인수로 받아서 활용하고 있음 -->
+<li><!-- name이 'detail'인 url 패턴으로 연결하되
+bookmark.id가 pk 매개변수로 지정되어
+/bookmark/99/와 같은 url 패턴으로 처리됨.
+따라서 BookmarkDV.as_view() 메소드가 담당하여
+bookmark_detail.html로 연결함. -->
+<a href="{% url 'detail' bookmark.id %}">
+{{ bookmark }}<!--
+{{ bookmark }} 템플릿 변수는
+Bookmark 테이블의 특정 레코드 하나를 의미하며,
+즉 Bookmark 클래스의 특정 객체를 의미하며,
+디폴트 컨텍스트 변수 object에 해당함.
+<ul> <li> 요소로 bookmark 객체를 지정하면
+bookmark.title이 출력되도록
+bookmark.models.Bookmark.__str__()에서 지정하였음. -->
+</a>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+</div>
 </body>
 </html>
-
-

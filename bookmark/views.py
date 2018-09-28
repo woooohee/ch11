@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
+def tabularBookmark(request):
+    bookmarks = Bookmark.objects.all().order_by('id')
+    return render(request, 'bookmark/tabular_list.html', {'bookmarks': bookmarks})
+
 from django.views.generic import ListView, DetailView
 # 모델 클래스 임포트
 from bookmark.models import Bookmark
