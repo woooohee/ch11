@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="750ecd80-1556-4182-8a90-2c664eda8d8e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/css/tabular.css" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/blog/post_all.html" afterPath="$PROJECT_DIR$/blog/templates/blog/post_all.html" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/blog/post_archive.html" afterPath="$PROJECT_DIR$/blog/templates/blog/post_archive.html" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/blog/post_archive_month.html" afterPath="$PROJECT_DIR$/blog/templates/blog/post_archive_month.html" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/blog/post_archive_year.html" afterPath="$PROJECT_DIR$/blog/templates/blog/post_archive_year.html" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/blog/post_detail.html" afterPath="$PROJECT_DIR$/blog/templates/blog/post_detail.html" />
-      <change beforePath="$PROJECT_DIR$/bookmark/admin.py" afterPath="$PROJECT_DIR$/bookmark/admin.py" />
-      <change beforePath="$PROJECT_DIR$/bookmark/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/bookmark/migrations/0001_initial.py" />
-      <change beforePath="$PROJECT_DIR$/bookmark/models.py" afterPath="$PROJECT_DIR$/bookmark/models.py" />
-      <change beforePath="$PROJECT_DIR$/bookmark/templates/bookmark/bookmark_detail.html" afterPath="$PROJECT_DIR$/bookmark/templates/bookmark/bookmark_detail.html" />
-      <change beforePath="$PROJECT_DIR$/bookmark/templates/bookmark/bookmark_list.html" afterPath="$PROJECT_DIR$/bookmark/templates/bookmark/bookmark_list.html" />
-      <change beforePath="$PROJECT_DIR$/bookmark/templates/bookmark/tabular_list.html" afterPath="$PROJECT_DIR$/bookmark/templates/bookmark/tabular_list.html" />
-      <change beforePath="$PROJECT_DIR$/bookmark/urls.py" afterPath="$PROJECT_DIR$/bookmark/urls.py" />
-      <change beforePath="$PROJECT_DIR$/bookmark/views.py" afterPath="$PROJECT_DIR$/bookmark/views.py" />
-      <change beforePath="$PROJECT_DIR$/static/css/base.css" afterPath="$PROJECT_DIR$/static/css/base.css" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" afterPath="$PROJECT_DIR$/templates/home.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
