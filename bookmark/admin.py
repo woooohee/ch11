@@ -1,12 +1,11 @@
-
 from django.contrib import admin
-# ºÏ¸¶Å© ¾Û ¸ğµ¨¿¡¼­ Å¬·¡½º ÀÓÆ÷Æ®
+# ë¶ë§ˆí¬ ì•± ëª¨ë¸ì—ì„œ í´ë˜ìŠ¤ ì„í¬íŠ¸
 from bookmark.models import Bookmark
-# ¾îµå¹Î Å¬·¡½º¿¡¼­ ¸®½ºÆ® Ãâ·Â ÇÊµå Ç×¸ñÀ» 2°³ ÁöÁ¤
 
-
+# ì–´ë“œë¯¼ í´ë˜ìŠ¤ì—ì„œ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥ í•„ë“œ í•­ëª©ì„ ì§€ì •
 class BookmarkAdmin(admin.ModelAdmin):
     list_display = ('title', 'url')
 
-
+# ëª¨ë¸ì€ Bookmark, ì–´ë“œë¯¼ í´ë˜ìŠ¤ëŠ” BookmarkAdminìœ¼ë¡œ ì§€ì •í•˜ì—¬
+# ì–´ë“œë¯¼ ì‚¬ì´íŠ¸ì— ë“±ë¡
 admin.site.register(Bookmark, BookmarkAdmin)

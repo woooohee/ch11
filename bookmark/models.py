@@ -1,13 +1,12 @@
 from django.db import models
-# Àå°í¿¡¼­
-# Å×ÀÌºíÀº (django.dbmodels.ModelÀ» »ó¼Ó¹Ş´Â) Å¬·¡½º·Î Á¤ÀÇÇÏ°í,
-# Å×ÀÌºí ÄÃ·³Àº Å¬·¡½º º¯¼ö·Î Á¤ÀÇÇÔ
 
-
+# ì¥ê³ ì—ì„œ
+# í…Œì´ë¸”ì€ (django.dbmodels.Modelì„ ìƒì†ë°›ëŠ”) í´ë˜ìŠ¤ë¡œ ì •ì˜í•˜ê³ ,
+# í…Œì´ë¸” ì»¬ëŸ¼ì€ í´ë˜ìŠ¤ ë³€ìˆ˜ë¡œ ì •ì˜í•¨
 class Bookmark(models.Model):
-    # id ÇÊµå(Integer, PK, Auto Increment)´Â ÀÚµ¿ »ı¼ºµÊ
+    # id í•„ë“œ(Integer, PK, Auto Increment)ëŠ” ìë™ ìƒì„±ë¨
     title = models.CharField(max_length=100, blank=True, null=True)
-    url = models.URLField('url', unique=True)
+    url = models.URLField('url', unique=True)   # 'url'ì€ Field.verbose_name(ë³„ì¹­)
 
-def __str__(self):
-    return self.title
+    def __str__(self):  # ê°ì²´ë¥¼ ë¬¸ìì—´ë¡œ ì¶œë ¥í•  ë•Œ ì‚¬ìš©í•˜ëŠ” í•¨ìˆ˜
+        return self.title

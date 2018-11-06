@@ -1,21 +1,28 @@
+# í…Œì´ë¸” í˜•íƒœë¡œ ë¶ë§ˆí¬ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜í˜• ë·°
 from django.shortcuts import render
+from .models import Bookmark # from bookmark.models import Bookmark # ê°™ì€ í‘œí˜„
 
 def tabularBookmark(request):
     bookmarks = Bookmark.objects.all().order_by('id')
     return render(request, 'bookmark/tabular_list.html', {'bookmarks': bookmarks})
 
+# í´ë˜ìŠ¤í˜• ì œë„¤ë¦­ ë·°ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ ì„í¬íŠ¸
 from django.views.generic import ListView, DetailView
-# ¸ğµ¨ Å¬·¡½º ÀÓÆ÷Æ®
+# ëª¨ë¸ í´ë˜ìŠ¤ ì„í¬íŠ¸
 from bookmark.models import Bookmark
-# ºÏ¸¶Å© Å×ÀÌºíÀÇ ÀüÃ¼ ·¹ÄÚµå ¸®½ºÆ® Ãâ·ÂÀ» À§ÇÑ ºä
+
+# ë¶ë§ˆí¬ í…Œì´ë¸”ì˜ ì „ì²´ ë ˆì½”ë“œ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥ì„ ìœ„í•œ ë·°
 class BookmarkLV(ListView):
     model = Bookmark
-# 1) µğÆúÆ® ÄÁÅØ½ºÆ® º¯¼ö object_list¸¦ Àû¿ë
-# 2) µğÆúÆ® ÅÛÇÃ¸´ ÆÄÀÏ¸í ¼Ò¹®ÀÚ¸ğµ¨¸í_list.html = bookmark_list.html
-# ºÏ¸¶Å© Å×ÀÌºíÀÇ Æ¯Á¤ ·¹ÄÚµå »ó¼¼ Ãâ·ÂÀ» À§ÇÑ ºä
+    # 1) ë””í´íŠ¸ ì»¨í…ìŠ¤íŠ¸ ë³€ìˆ˜ object_listë¥¼ ì ìš©
+    # 2) ë””í´íŠ¸ í…œí”Œë¦¿ íŒŒì¼ëª… ì†Œë¬¸ìëª¨ë¸ëª…_list.html = bookmark_list.html
+
+# ë¶ë§ˆí¬ í…Œì´ë¸”ì˜ íŠ¹ì • ë ˆì½”ë“œ ìƒì„¸ ì¶œë ¥ì„ ìœ„í•œ ë·°
 class BookmarkDV(DetailView):
     model = Bookmark
-# 1) µğÆúÆ® ÄÁÅØ½ºÆ® º¯¼ö object¸¦ Àû¿ë
-# 2) µğÆúÆ® ÅÛÇÃ¸´ ÆÄÀÏ¸í ¼Ò¹®ÀÚ¸ğµ¨¸í_detail.html = bookmark_detail.html
-# ±âº» Å°·Î Á¶È¸ÇÏ´Â °æ¿ì, ¸ğµ¨ Å¬·¡½º ¸í¸¸ ÁöÁ¤ÇÏ¸é,
-# r'^bookmark/(?P<pk>)\d+)/$'¿¡ µû¶ó¼­ ±âº» Å° °ªÀÌ ÀÚµ¿À¸·Î ÀÎ¼ö Àü´ŞµÊ
+    # 1) ë””í´íŠ¸ ì»¨í…ìŠ¤íŠ¸ ë³€ìˆ˜ objectë¥¼ ì ìš©
+    # 2) ë””í´íŠ¸ í…œí”Œë¦¿ íŒŒì¼ëª… ì†Œë¬¸ìëª¨ë¸ëª…_detail.html = bookmark_detail.html
+    #    ê¸°ë³¸ í‚¤ë¡œ ì¡°íšŒí•˜ëŠ” ê²½ìš°, ëª¨ë¸ í´ë˜ìŠ¤ ëª…ë§Œ ì§€ì •í•˜ë©´,
+    #    r'^bookmark/(?P<pk>)\d+)/$'ì— ë”°ë¼ì„œ ê¸°ë³¸ í‚¤ ê°’ì´ ìë™ìœ¼ë¡œ ì¸ìˆ˜ ì „ë‹¬ë¨
+
+

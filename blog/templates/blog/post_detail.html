@@ -1,3 +1,36 @@
+{% extends "base.html" %}
+  {% block title %}장고 게시글 보기{% endblock %}
+  {% load staticfiles %}
+  {% block extrastyle %}{% static "css/tabular.css" %}{% endblock %}
+  {% block content %}
+      <!--div#content 내부로 전체 콘텐츠 이동-->
+      <div id="content" class="centered">
+          <h2>{{ object.title }}</h2>
+          <p class="other_posts">
+              {% if object.get_previous_by_modify_date %}
+                  <a href="{{ object.get_previous_post.get_absolute_url }}" title="View previous post">
+                      &laquo;-- {{ object.get_previous_post }}
+                  </a>
+              {% endif %}
+
+              {% if object.get_next_by_modify_date %}
+                  &nbsp; |
+                  <a href="{{ object.get_next_post.get_absolute_url }}" title="View next post">
+                      {{ object.get_next_post }} --&raquo;
+                  </a>
+              {% endif %}
+          </p>
+          <p class="date">{{ object.modify_date|date:"j F Y" }}</p>
+          <br/>
+
+          <div class="body">
+              {{ object.content|linebreaks }}
+          </div>
+      </div>
+  {% endblock %}}
+
+
+
 <!DOCTYPE html>
 
 <head>
