@@ -15,9 +15,8 @@ Including another URLconf
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import url
-from blog.views import * # 이렇게 수정하면 아래와 같이 views.~ 형식에서 views. 부분을 빼야 함
-                         # bookmark.urls에서는 from . import views로 했으므로 views.~ 형식으로 사용해야 함
-#  아래에서 blog/ 부분은 이미 처리되고 넘어온 상황임
+from blog.views import *
+
 urlpatterns = [
 
     # Example: /
@@ -58,7 +57,13 @@ urlpatterns = [
       # (?u)  : 앞의 표현식을 유니코드로 인식하라고 지정(주소창에 한글 입력 가능하도록)
       # Example: /tag/tagname
     url(r'^tag/(?P<tag>[^/]+(?u))/$', PostTOL.as_view(), name='tagged_object_list'),
+
+    url(r'^tag/(?P<tag>[^/]+(?u))/$', PostTOL.as_view(), name='tagged_object_list'),
+
+    # Example: /search/  # ch09 1/1
+    url(r'^search/$', SearchFormView.as_view(), name='search'),
 ]
+
 
 # [^/]+ - 슬래시 아닌글자가 여러개 나오면 이라는 뜻
 # (?u) - 앞의 내용을 utf 방식으로 처리해라(한글)
