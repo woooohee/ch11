@@ -44,7 +44,12 @@ INSTALLED_APPS = [
     'bookmark.apps.BookmarkConfig',     # (ch02) bookmark 앱을 추가 등록
     'blog.apps.BlogConfig',             # (ch03) blog 앱을 추가 등록
     'tagging.apps.TaggingConfig',
+    'disqus',
+    'django.contrib.sites',
 ]
+DISQUS_WEBSITE_SHORTNAME = 'woooheee'   # (ch08) 3/4 [Website Name]
+SITE_ID = 1                             # (ch08) 4/4 django.contrib.sites를 등록할 때 사용하는 값, 임의로 지정하지만, 중복되지 않도록!
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
