@@ -83,6 +83,8 @@ from django.shortcuts import render             # 단축 함수 render()
 # 사용자가 폼에 데이터 입력 후 제출하면 이는 POST 요청으로 접수되고
 # 입력 데이터에 대한 유효성 검사를 실시하여 유효하면
 # form_valid() 함수를 실행한 후 적절한 URL로 리다이렉트 처리함
+
+
 class SearchFormView(FormView):
     form_class = PostSearchForm             # 폼으로 사용할 클래스를 지정
     template_name = 'blog/post_search.html' # 템플릿 지정
@@ -91,18 +93,30 @@ class SearchFormView(FormView):
     def form_valid(self, form) :
 	    # POST 요청의 id가 'search_word'인 값을 추출하여 변수에 저장
         schWord = '%s' % self.request.POST['search_word']
-	    # filter() 메소드의 매칭 조건을 Q 객체로 다양하게 지정 가능함
-	    # 각 조건에서 icontains 연산자는 대소문자 구별 없이
-	    # 검색어가 포함되었는지 검사
-	    # distinct() 메소드는 중복된 객체를 제외함
-	    # 결국, Post 테이블의 모든 레코드에 대하여
-	    # title, description, content, tag 필드에
-	    # schWord가 포함된 레코드를 대소문자 구별 없이 검색해서 중복 없는 리스트로 저장
+
         post_list = Post.objects.filter(
-	        Q(title__icontains=schWord) |
-	        Q(description__icontains=schWord) |
-	        Q(content__icontains=schWord) |
-	        Q(tag__icontains=schWord)
+	        Q(title__icontains=schWord)
+	        # Q(description__icontains=schWord) |
+	        # Q(content__icontains=schWord) |
+	        # Q(tag__icontains=schWord)
+        ).distinct()
+        post_list = Post.objects.filter(
+            # Q(title__icontains=schWord)
+            Q(description__icontains=schWord)
+            # Q(content__icontains=schWord) |
+            # Q(tag__icontains=schWord)
+        ).distinct()
+        post_list = Post.objects.filter(
+            # Q(title__icontains=schWord)
+            # Q(description__icontains=schWord)
+            Q(content__icontains=schWord)
+            # Q(tag__icontains=schWord)
+        ).distinct()
+        post_list = Post.objects.filter(
+            # Q(title__icontains=schWord)
+            # Q(description__icontains=schWord)
+            # Q(content__icontains=schWord)
+            Q(tag__icontains=schWord)
         ).distinct()
 
         # 템플릿에 전달할 맥락 변수 context를 사전 형식으로 정의

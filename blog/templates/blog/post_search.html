@@ -3,17 +3,46 @@
 {% load staticfiles %}
 {% block extrastyle %}{% static "css/tabular.css" %}{% endblock %}
 {% block content %}
-<div id="content">
+<div id="content" xmlns:top="http://www.w3.org/1999/xhtml" xmlns:bottom="http://www.w3.org/1999/xhtml">
     <!--blog.views.SearchFormView.form_valid() 함수와 함께 보면서 작업하라-->
-    <h1 class="centered">게시글 검색</h1>
-    <!--form 태그로 폼을 출력, 확인 누르면 POST 방식으로 요청을 동일한 URL로 전송-->
-    <!--CSRF 공격(Cross Site Request Forgery) 출처: http://itstory.tk/entry/CSRF-공격이란-그리고-CSRF-방어-방법 [덕's IT Story]-->
-    <!--csrf-token 태그를 써서 CSRF 공격을 방지-->
+    <!--<h1 class="centered">게시글 검색</h1>-->
+    <!--&lt;!&ndash;form 태그로 폼을 출력, 확인 누르면 POST 방식으로 요청을 동일한 URL로 전송&ndash;&gt;-->
+    <!--&lt;!&ndash;CSRF 공격(Cross Site Request Forgery) 출처: http://itstory.tk/entry/CSRF-공격이란-그리고-CSRF-방어-방법 [덕's IT Story]&ndash;&gt;-->
+    <!--&lt;!&ndash;csrf-token 태그를 써서 CSRF 공격을 방지&ndash;&gt;-->
+    <!--<form action="." method="post" class="centered"> {% csrf_token %}-->
+        <!--&lt;!&ndash;form은 뷰가 넘겨준 PostSearchForm을 의미함&ndash;&gt;-->
+        <!--{{ form.as_table }}-->
+        <!--<input type="submit" value="확인" />-->
+    <!--</form>-->
+    <!-------------------------------------------------------------------->
+     <h3 class="centered"> 제목 </h3>
     <form action="." method="post" class="centered"> {% csrf_token %}
         <!--form은 뷰가 넘겨준 PostSearchForm을 의미함-->
         {{ form.as_table }}
         <input type="submit" value="확인" />
     </form>
+    <!-------------------------------------------------------------------->
+     <h3 class="centered" > 요약 </h3>
+    <form action="." method="post" class="centered"> {% csrf_token %}
+        <!--form은 뷰가 넘겨준 PostSearchForm을 의미함-->
+        {{ form.as_table }}
+        <input type="submit" value="확인" />
+    </form>
+     <!-------------------------------------------------------------------->
+     <h3 class="centered"> 본문 </h3>
+    <form action="." method="post" class="centered"> {% csrf_token %}
+        <!--form은 뷰가 넘겨준 PostSearchForm을 의미함-->
+        {{ form.as_table }}
+        <input type="submit" value="확인" />
+    </form>
+     <!-------------------------------------------------------------------->
+    <h3 class="centered"> 태그 </h3>
+    <form action="." method="post" class="centered"> {% csrf_token %}
+        <!--form은 뷰가 넘겨준 PostSearchForm을 의미함-->
+        {{ form.as_table }}
+        <input type="submit" value="확인" />
+    </form>
+     <!-------------------------------------------------------------------->
     <br/><br/>
     {% if object_list and search_term %}
         <h2 class="centered">({{ search_term }})에 대한 검색 결과</h2>
